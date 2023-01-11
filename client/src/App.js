@@ -1,7 +1,22 @@
 import logo from './logo.svg';
+import React, {useEffect, useState} from 'react';
+
 import './App.css';
+import 'semantic-ui-css/semantic.min.css'
 
 function App() {
+
+  const [test, setTest] = useState([])
+
+
+  useEffect(() => {
+    fetch("/matches")
+    .then(res => res.json())
+    .then(setTest)
+  }, [])
+console.log(test)
+
+
   return (
     <div className="App">
       <header className="App-header">
