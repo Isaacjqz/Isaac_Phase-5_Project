@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 // import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function SignInForm({updateUser}) {
 //   const [email, setEmail] = useState('');
 //   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([])
-//   const history = useHistory();
+  const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
       email: "",
@@ -19,13 +20,13 @@ function SignInForm({updateUser}) {
     //Logs in user 
     fetch("/login", {
         method: "POST",
-        headers: {"Content-Type": "application"},
+        headers: {"Content-Type": "application/json"},
         body: JSON.stringify(formData),
     }).then((response) => {
         if (response.ok) {
             response.json().then((user) => {
                 updateUser(user)
-                // history.push("/users");
+                navigate("/");
             })
         } else {
             response.json().then((json) => setErrors(json.errors));
@@ -44,6 +45,7 @@ function SignInForm({updateUser}) {
         Email:
         <input
           type="email"
+          name="email"
           value={formData.email}
         //   onChange={e => setEmail(e.target.value)}
         onChange={handleChange}
@@ -55,6 +57,7 @@ function SignInForm({updateUser}) {
         Password:
         <input
           type="password"
+          name="password"
           value={formData.password}
         //   onChange={e => setPassword(e.target.value)}
         onChange={handleChange}
