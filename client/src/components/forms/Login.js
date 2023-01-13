@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-// import { useHistory } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-function SignInForm({updateUser}) {
+function Login({updateUser}) {
 //   const [email, setEmail] = useState('');
 //   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([])
@@ -70,4 +69,4 @@ function SignInForm({updateUser}) {
   );
 }
 
-export default SignInForm;
+export default Login;

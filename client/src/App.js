@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import SignUpForm from "./components/forms/SignUpForm";
-import SignInForm from "./components/forms/SignInForm";
+import Login from "./components/forms/Login";
 // import Details from "./components/Details"
 // import Goals from "./components/Goals.js"
 // import Locations from "./components/Locations.js"
@@ -13,7 +13,7 @@ import "./App.css";
 
 function App() {
   const [users, setUsers] = useState([]);
-  const [user, setUser] = useState({}); // set to null in case user comes back
+  const [user, setUser] = useState({});
   const updateUser = (user) => setUser(user);
 
   useEffect(() => {
@@ -22,17 +22,21 @@ function App() {
       .then((data) => setUsers(data));
   }, []);
 
+  useEffect(() => {
+    fetch("/authorized").then((response) => {
+      if (response.ok) {
+        response.json().then((user) => {
+          setUser(user);
+        });
+      }
+    });
+  }, []);
+
   return (
     <Routes>
-      <Route path="/" element={<User 
-      updateUser={updateUser}
-      user = {user}
-      />} />
+      <Route path="/" element={<User updateUser={updateUser} user={user} />} />
       <Route path="/users" element={<SignUpForm />} />
-      <Route path="/SignInForm" element={
-      <SignInForm 
-      updateUser={updateUser}
-      />} />
+      <Route path="/Login" element={<Login updateUser={updateUser} />} />
     </Routes>
   );
 }

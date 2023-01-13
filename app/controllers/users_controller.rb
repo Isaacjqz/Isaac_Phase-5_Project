@@ -11,6 +11,9 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
+    # byebug
+    user = User.find(session[:user_id])
+    byebug 
     render json: user
   end
 
