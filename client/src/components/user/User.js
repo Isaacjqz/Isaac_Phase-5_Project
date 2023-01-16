@@ -12,7 +12,7 @@ function User({ updateUser, user }) {
       if (response.ok) {
         updateUser(false);
         navigate("/login");
-        //redirect user to home
+        //redirect user to login
       }
     });
   };

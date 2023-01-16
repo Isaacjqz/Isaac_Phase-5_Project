@@ -35,8 +35,13 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<User updateUser={updateUser} user={user} />} />
-      <Route path="/users" element={<SignUpForm />} />
+      <Route path="/signup" element={<SignUpForm 
+      users ={users}
+      setUsers ={setUsers}
+
+      />} />
       <Route path="/Login" element={<Login updateUser={updateUser} />} />
+      {/* <Route path="/users" element={<Login updateUser={updateUser} />} /> */}
     </Routes>
   );
 }

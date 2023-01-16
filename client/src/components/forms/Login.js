@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
 function Login({updateUser}) {
-//   const [email, setEmail] = useState('');
-//   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([])
   const navigate = useNavigate();
 
@@ -14,8 +12,6 @@ function Login({updateUser}) {
 
   const handleSubmit = event => {
     event.preventDefault();
-    // console.log(email, password);
-    // Add code here to send the email and password to your server
     //Logs in user 
     fetch("/login", {
         method: "POST",
