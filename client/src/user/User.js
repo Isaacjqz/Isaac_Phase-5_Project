@@ -1,5 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+// import Navigator from "./user/Navigator.js";
+// import Header from "./components/Header"
 
 function User({ updateUser, user }) {
   const navigate = useNavigate();
@@ -11,7 +13,7 @@ function User({ updateUser, user }) {
     }).then((response) => {
       if (response.ok) {
         updateUser(false);
-        navigate("/login");
+        navigate("/");
         //redirect user to login
       }
     });
@@ -19,7 +21,9 @@ function User({ updateUser, user }) {
 
   return (
     <>
-      <h1> Hello User </h1>
+    {/* <Header/> */}
+      {/* <Navigator /> */}
+      <h1>Hello User</h1>
       <br />
       <button onClick={handleSignOut}>Sign Out</button>
     </>

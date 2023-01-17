@@ -7,7 +7,7 @@ import Login from "./components/forms/Login";
 // import Goals from "./components/Goals.js"
 // import Locations from "./components/Locations.js"
 // import Matches from "./components/Matches.js"
-import User from "./components/user/User";
+import User from "./user/User";
 import "./App.css";
 // import 'semantic-ui-css/semantic.min.css'
 
@@ -32,15 +32,21 @@ function App() {
     });
   }, []);
 
+  // "/" = landing page
   return (
     <Routes>
-      <Route path="/" element={<User updateUser={updateUser} user={user} />} />
-      <Route path="/signup" element={<SignUpForm 
-      users ={users}
-      setUsers ={setUsers}
-
-      />} />
-      <Route path="/Login" element={<Login updateUser={updateUser} />} />
+      <Route
+        path="/"
+        element={<SignUpForm users={users} setUsers={setUsers} user={user} />}
+      />
+      <Route
+        path="/login"
+        element={<Login updateUser={updateUser} user={user} />}
+      />
+      <Route
+        path="/Logout"
+        element={<User updateUser={updateUser} user={user} />}
+      />
       {/* <Route path="/users" element={<Login updateUser={updateUser} />} /> */}
     </Routes>
   );
