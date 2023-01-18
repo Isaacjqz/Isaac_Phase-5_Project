@@ -8,7 +8,7 @@ import Login from "./components/forms/Login";
 // import Locations from "./components/Locations.js"
 // import Matches from "./components/Matches.js"
 import User from "./components/user/User";
-import Card from "./components/userCard/Card"
+// import UserCard from "./components/user/UserCard.js";
 import "./App.css";
 // import 'semantic-ui-css/semantic.min.css'
 
@@ -37,7 +37,7 @@ function App() {
   // "/" = landing page
   return (
     <>
-    <Card/>
+    {/* <UserCard users={users}/> */}
     <Routes>
       <Route
         path="/"
