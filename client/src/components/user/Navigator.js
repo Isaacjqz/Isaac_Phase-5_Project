@@ -18,6 +18,7 @@ import SettingsEthernetIcon from "@mui/icons-material/SettingsEthernet";
 import SettingsInputComponentIcon from "@mui/icons-material/SettingsInputComponent";
 import TimerIcon from "@mui/icons-material/Timer";
 import SettingsIcon from "@mui/icons-material/Settings";
+import Container from "@mui/material/Container";
 // import PhonelinkSetupIcon from "@mui/icons-material/PhonelinkSetup";
 // import IconButton from "@mui/material/IconButton";
 
@@ -43,9 +44,9 @@ const categories = [
   {
     id: "Quality",
     children: [
-      { id: "Settings", icon: <SettingsIcon /> }
-    //   { id: "Performance", icon: <TimerIcon /> },
-    //   { id: "Test Lab", icon: <PhonelinkSetupIcon /> },
+      { id: "Settings", icon: <SettingsIcon /> },
+      //   { id: "Performance", icon: <TimerIcon /> },
+      //   { id: "Test Lab", icon: <PhonelinkSetupIcon /> },
     ],
   },
 ];
@@ -114,11 +115,12 @@ function Navigator({ PaperProps, updateUser, user }) {
           </Box>
         ))}
       </List>
-      <br/>
-      
-      <Button onClick={handleSignOut} variant="outlined" sx={{ mr: 3}}>
-        Log Out
-      </Button>
+
+      <Box sx={{ mt: 40 }} justifyContent="center" display="flex">
+        <Button onClick={handleSignOut} variant="outlined" sx={{ mr: 3 }}>
+          Log Out
+        </Button>
+      </Box>
     </Drawer>
   );
 }

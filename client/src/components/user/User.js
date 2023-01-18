@@ -154,7 +154,7 @@ theme = {
   },
 };
 
-const drawerWidth = 256;
+const drawerWidth = 195;
 
 function User({ updateUser, user }) {
   // const navigate = useNavigate();
