@@ -35,7 +35,7 @@ function Login({ updateUser }) {
       if (response.ok) {
         response.json().then((user) => {
           updateUser(user);
-          navigate("/logout");
+          navigate("/user");
         });
       } else {
         response.json().then((json) => setErrors(json.errors));

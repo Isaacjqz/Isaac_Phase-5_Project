@@ -7,14 +7,15 @@ import Login from "./components/forms/Login";
 // import Goals from "./components/Goals.js"
 // import Locations from "./components/Locations.js"
 // import Matches from "./components/Matches.js"
-import User from "./user/User";
+import User from "./components/user/User";
 import "./App.css";
 // import 'semantic-ui-css/semantic.min.css'
 
 function App() {
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState({});
-  const updateUser = (user) => setUser(user);
+  // const updateUser = (user) => setUser(user);
+ 
 
   useEffect(() => {
     fetch("/users")
@@ -41,11 +42,11 @@ function App() {
       />
       <Route
         path="/login"
-        element={<Login updateUser={updateUser} user={user} />}
+        element={<Login updateUser={setUser} user={user} />}
       />
       <Route
-        path="/Logout"
-        element={<User updateUser={updateUser} user={user} />}
+        path="/user"
+        element={<User updateUser={setUser} user={user} />}
       />
       {/* <Route path="/users" element={<Login updateUser={updateUser} />} /> */}
     </Routes>

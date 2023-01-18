@@ -11,8 +11,9 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
-    user = User.find(session[:user_id])
-    render json: user
+    # user = User.find(session[:user_id])
+    render json: current_user, status: :ok
+    
   end
 
   # POST /users
