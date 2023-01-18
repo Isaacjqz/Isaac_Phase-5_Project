@@ -2,7 +2,7 @@ import React from "react";
 // import { useNavigate } from "react-router-dom";
 import Navigator from "../user/Navigator";
 import Header from "../user/Header";
-import Content from "../user/Content";
+import Card from "../userCard/UserCard";
 // Material Ui imports
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -202,7 +202,7 @@ function User({ updateUser, user }) {
             component="main"
             sx={{ flex: 1, py: 6, px: 4, bgcolor: "#eaeff1" }}
           >
-            <Content />
+            <Card />
           </Box>
           <Box component="footer" sx={{ p: 2, bgcolor: "#eaeff1" }}>
             {/* <Copyright /> */}

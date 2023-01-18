@@ -8,6 +8,7 @@ import Login from "./components/forms/Login";
 // import Locations from "./components/Locations.js"
 // import Matches from "./components/Matches.js"
 import User from "./components/user/User";
+import Card from "./components/userCard/Card"
 import "./App.css";
 // import 'semantic-ui-css/semantic.min.css'
 
@@ -35,6 +36,8 @@ function App() {
 
   // "/" = landing page
   return (
+    <>
+    <Card/>
     <Routes>
       <Route
         path="/"
@@ -49,7 +52,9 @@ function App() {
         element={<User updateUser={setUser} user={user} />}
       />
       {/* <Route path="/users" element={<Login updateUser={updateUser} />} /> */}
+      
     </Routes>
+    </>
   );
 }
 
