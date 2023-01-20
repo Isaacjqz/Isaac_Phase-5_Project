@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-
 import theme from "./UserTheme";
-
 import Navigator from "../user/Navigator";
 import Header from "../user/Header";
 import UserCard from "../user/UserCard";
@@ -12,12 +10,10 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
-
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 
-
-const drawerWidth = 195;
+const drawerWidth = 256;
 
 function User({ updateUser, user }) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -36,17 +32,6 @@ function User({ updateUser, user }) {
 
   return (
     <ThemeProvider theme={theme}>
-      
-      <Container>
-        <Grid container>
-          {cards.map((card) => (
-            <Grid item key={card.id} xs={12} md={6} lg={2}>
-             <UserCard card={card}/>
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
-
       <Box sx={{ display: "flex", minHeight: "100vh" }}>
         <CssBaseline />
         <Box
@@ -61,27 +46,29 @@ function User({ updateUser, user }) {
             updateUser={updateUser}
             user={user}
           />
-
-          {/* <UserCard /> */}
         </Box>
         <Box sx={{ flex: 1, display: "flex", flexDirection: "column" }}>
           <Header onDrawerToggle={handleDrawerToggle} />
           <Box
             component="main"
-            sx={{ flex: 1, py: 6, px: 4, bgcolor: "#eaeff1" }}
+            sx={{ flex: 1, px: 4, bgcolor: "#eaeff1" }}
           ></Box>
+          {/* User cards */}
+          <Container>
+            <Grid container>
+              {cards.map((card) => (
+                <Grid>
+                  <UserCard card={card} user={user} />
+                </Grid>
+              ))}
+            </Grid>
+          </Container>
           <Box component="footer" sx={{ p: 2, bgcolor: "#eaeff1" }}>
             {/* <Copyright /> */}
           </Box>
         </Box>
       </Box>
     </ThemeProvider>
-
-    // <>
-    //   {/* <h1>Hello User</h1>
-    //   <br /> */}
-    //   {/* <button onClick={handleSignOut}>Sign Out</button> */}
-    // </>
   );
 }
 

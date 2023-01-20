@@ -4,19 +4,19 @@ import { Routes, Route } from "react-router-dom";
 import SignUpForm from "./components/forms/SignUpForm";
 import Login from "./components/forms/Login";
 // import Details from "./components/Details"
-// import Goals from "./components/Goals.js"
+import GoalsUpdate from "./components/goals/GoalsUpdate";
 // import Locations from "./components/Locations.js"
 // import Matches from "./components/Matches.js"
 import User from "./components/user/User";
-// import UserCard from "./components/user/UserCard.js";
+import UserSettings from "./components/user/UserSettings";
 import "./App.css";
 // import 'semantic-ui-css/semantic.min.css'
 
 function App() {
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState({});
-  // const updateUser = (user) => setUser(user);
- 
+  const [goals, setGoals] = useState ([])
+  const updateUser = (user) => setUser(user);
 
   useEffect(() => {
     fetch("/users")
@@ -34,26 +34,37 @@ function App() {
     });
   }, []);
 
+  useEffect(() => {
+    fetch("/goals")
+      .then((res) => res.json())
+      .then((data) => setGoals(data));
+  }, []);
+
   // "/" = landing page
   return (
     <>
-    {/* <UserCard users={users}/> */}
-    <Routes>
-      <Route
-        path="/"
-        element={<SignUpForm users={users} setUsers={setUsers} user={user} />}
-      />
-      <Route
-        path="/login"
-        element={<Login updateUser={setUser} user={user} />}
-      />
-      <Route
-        path="/user"
-        element={<User updateUser={setUser} user={user} />}
-      />
-      {/* <Route path="/users" element={<Login updateUser={updateUser} />} /> */}
-      
-    </Routes>
+      <Routes>
+        <Route
+          path="/"
+          element={<SignUpForm users={users} setUsers={setUsers} user={user} />}
+        />
+        <Route
+          path="/login"
+          element={<Login updateUser={setUser} user={user} />}
+        />
+        <Route
+          path="/user"
+          element={<User goals={goals} updateUser={setUser} user={user} />}
+        />
+        <Route
+          path="/goals"
+          element={<GoalsUpdate goals={goals} updateUser={updateUser} user={user} />}
+        />
+         <Route
+          path="/settings"
+          element={<UserSettings updateUser={updateUser} user={user} />}
+        />
+      </Routes>
     </>
   );
 }

@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
-  # before_action :set_user, only: [:show, :update, :destroy]
+  before_action :set_user, only: [:show, :update, :destroy]
   wrap_parameters :user, include: [:first_name, :last_name, :email, :zip_code, :age, :user_name, :password, :current_country, :current_state, :current_city]
   skip_before_action :authorized_user, only: [:create]
 
   # GET /users
   def index
-    users = User.all
-    render json: users
+    @users = User.all
+    render json: @users
   end
 
   # GET /users/1
@@ -18,8 +18,8 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
-    user = User.create!(user_params)
-    render json: user, status: :created 
+    @user = User.create!(user_params)
+    render json: @user, status: :created 
 
     # if user.save
     #   render json: user, status: :created, location: user
@@ -30,22 +30,23 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1
   def update
-    if user.update(user_params)
-      render json: user
+    if @user.update(user_params)
+      render json: @user
     else
-      render json: user.errors, status: :unprocessable_entity
+      render json: @user.errors, status: :unprocessable_entity
     end
   end
 
   # DELETE /users/1
   def destroy
-    user.destroy
+    @user.destroy
+    head :no_content
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      user = User.find(params[:id])
+      @user = User.find_by(id: params[:id])
     end
 
     # Only allow a list of trusted parameters through.

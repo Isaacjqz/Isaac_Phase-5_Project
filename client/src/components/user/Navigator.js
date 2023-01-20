@@ -1,7 +1,6 @@
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
 
-
 // Material Ui imports
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
@@ -24,6 +23,9 @@ import SettingsIcon from "@mui/icons-material/Settings";
 
 // import PhonelinkSetupIcon from "@mui/icons-material/PhonelinkSetup";
 // import IconButton from "@mui/material/IconButton";
+
+
+
 
 const categories = [
   {
@@ -74,8 +76,12 @@ function Navigator({ PaperProps, updateUser, user }) {
 
   const navigate = useNavigate();
 
+  function navigateToDeleteSettings() {
+    navigate("/settings")
+  }
+
   const handleSignOut = () => {
-    console.log("it works");
+    // console.log("it works");
     fetch(`/logout`, {
       method: "DELETE",
     }).then((response) => {
@@ -106,14 +112,34 @@ function Navigator({ PaperProps, updateUser, user }) {
             <ListItem sx={{ py: 2, px: 3 }}>
               <ListItemText sx={{ color: "#fff" }}>{id}</ListItemText>
             </ListItem>
-            {children.map(({ id: childId, icon, active }) => (
-              <ListItem disablePadding key={childId}>
-                <ListItemButton selected={active} sx={item}>
-                  <ListItemIcon>{icon}</ListItemIcon>
-                  <ListItemText>{childId}</ListItemText>
-                </ListItemButton>
-              </ListItem>
-            ))}
+            {children.map(({ id: childId, icon, active }) =>
+              // console.log(childId)
+              // Settings
+
+              childId == "Settings" ? (
+                <ListItem disablePadding key={childId}>
+                  <ListItemButton
+                    selected={active}
+                    sx={item}
+                    onClick={() => navigateToDeleteSettings()}
+                  >
+                    <ListItemIcon>{icon}</ListItemIcon>
+                    <ListItemText>{childId}</ListItemText>
+                  </ListItemButton>
+                </ListItem>
+              ) : (
+                <ListItem disablePadding key={childId}>
+                  <ListItemButton
+                    selected={active}
+                    sx={item}
+                    onClick={() => console.log("not settings")}
+                  >
+                    <ListItemIcon>{icon}</ListItemIcon>
+                    <ListItemText>{childId}</ListItemText>
+                  </ListItemButton>
+                </ListItem>
+              )
+            )}
             <Divider sx={{ mt: 2 }} />
           </Box>
         ))}
