@@ -9,6 +9,7 @@ import GoalsUpdate from "./components/goals/GoalsUpdate";
 // import Matches from "./components/Matches.js"
 import User from "./components/user/User";
 import UserSettings from "./components/user/UserSettings";
+import EditProfile from "./components/user/EditProfile"
 import "./App.css";
 // import 'semantic-ui-css/semantic.min.css'
 
@@ -16,13 +17,14 @@ function App() {
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState({});
   const [goals, setGoals] = useState ([])
+  const [update, setUpdate] = useState(true)
   const updateUser = (user) => setUser(user);
 
   useEffect(() => {
     fetch("/users")
       .then((res) => res.json())
       .then((data) => setUsers(data));
-  }, []);
+  }, [update]);
 
   useEffect(() => {
     fetch("/authorized").then((response) => {
@@ -63,6 +65,10 @@ function App() {
          <Route
           path="/settings"
           element={<UserSettings updateUser={updateUser} user={user} />}
+        />
+         <Route
+          path="/edit"
+          element={<EditProfile updateUser={updateUser} user={user} setUpdate={setUpdate}/>}
         />
       </Routes>
     </>

@@ -8,5 +8,10 @@ class User < ApplicationRecord
   has_many :goals, dependent: :destroy
 
   validates :email, uniqueness: true 
-  validates :password, length: {minimum: 5}
+  validates :password, length: {minimum: 5}, on: :create
+  validates :password, length: {minimum: 5}, if: :password_exist? 
+
+  def password_exist? 
+    password
+  end
 end
