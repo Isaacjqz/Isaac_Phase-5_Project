@@ -43,6 +43,19 @@ class UsersController < ApplicationController
     head :no_content
   end
 
+  def users_to_match
+    # render json: current_user 
+    # byebug
+    if current_user
+      users_for_feed = User.all.filter do |each_user| 
+        each_user.id != current_user.id 
+      end 
+      render json: users_for_feed
+    else
+      render json: []
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

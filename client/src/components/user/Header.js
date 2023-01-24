@@ -26,6 +26,14 @@ function Header(onDrawerToggle) {
   function navigateToUpdateUser() {
     navigate("/edit");
   }
+
+  function navigateToLocations() {
+    navigate("/locations");
+  }
+
+   function navigateToUserFeed() {
+    navigate("/user");
+  }
   return (
     <React.Fragment>
       <AppBar color="primary" position="sticky" elevation={0}>
@@ -116,10 +124,10 @@ function Header(onDrawerToggle) {
         sx={{ zIndex: 0 }}
       >
         <Tabs value={0} textColor="inherit">
-          <Tab label="Users" />
-          <Tab label="Sign-in method" />
-          <Tab label="Templates" />
-          <Tab label="Usage" />
+          <Tab label="Users" onClick={() => navigateToUserFeed()}/>
+          <Tab label="Locations" onClick={()=> navigateToLocations()}/>
+          {/* <Tab label="Templates" />
+          <Tab label="Usage" /> */}
         </Tabs>
       </AppBar>
     </React.Fragment>

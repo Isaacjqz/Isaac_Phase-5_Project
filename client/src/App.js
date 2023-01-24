@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import SignUpForm from "./components/forms/SignUpForm";
 import Login from "./components/forms/Login";
+import Locations from "./components/user/Locations";
 // import Details from "./components/Details"
 import GoalsUpdate from "./components/goals/GoalsUpdate";
 // import Locations from "./components/Locations.js"
@@ -57,6 +58,10 @@ function App() {
         <Route
           path="/user"
           element={<User goals={goals} updateUser={setUser} user={user} />}
+        />
+        <Route
+          path="/locations"
+          element={<Locations goals={goals} updateUser={setUser} user={user} />}
         />
         <Route
           path="/goals"

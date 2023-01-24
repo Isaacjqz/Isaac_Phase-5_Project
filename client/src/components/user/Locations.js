@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import theme from "./UserTheme";
-import Navigator from "../user/Navigator";
-import Header from "../user/Header";
-import UserCard from "../user/UserCard";
+import Navigator from "./Navigator";
+import Header from "./Header";
+import LocationCard from "./LocationCard";
 // Material Ui imports
 import { ThemeProvider } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -15,19 +15,19 @@ import Container from "@mui/material/Container";
 
 const drawerWidth = 256;
 
-function User({ updateUser, user }) {
+function Locations({ updateUser, user }) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
-  const [cards, setCards] = useState([]);
+  const [locationCards, setLocationCards] = useState([]);
 
   useEffect(() => {
-    fetch("/user_feed")
+    fetch("/locations")
       .then((res) => res.json())
-      .then((data) => setCards(data)); //(data) => setCards(data)
+      .then((data) => setLocationCards(data)); //(data) => setLocationCards(data)
   }, []);
 
   return (
@@ -56,9 +56,9 @@ function User({ updateUser, user }) {
           {/* User cards */}
           <Container>
             <Grid container>
-              {cards.map((card) => (
+              {locationCards.map((location) => (
                 <Grid>
-                  <UserCard card={card} user={user} />
+                  <LocationCard location={location} user={user} />
                 </Grid>
               ))}
             </Grid>
@@ -72,4 +72,4 @@ function User({ updateUser, user }) {
   );
 }
 
-export default User;
+export default Locations;
