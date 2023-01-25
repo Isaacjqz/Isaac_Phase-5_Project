@@ -5,11 +5,11 @@ import Header from "./Header";
 import LocationCard from "./LocationCard";
 // Material Ui imports
 import { ThemeProvider } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
+// import useMediaQuery from "@mui/material/useMediaQuery";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
+// import Typography from "@mui/material/Typography";
+// import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 
@@ -27,7 +27,7 @@ function Locations({ updateUser, user }) {
   useEffect(() => {
     fetch("/locations")
       .then((res) => res.json())
-      .then((data) => setLocationCards(data)); //(data) => setLocationCards(data)
+      .then((data) => setLocationCards(data)); 
   }, []);
 
   return (
@@ -48,17 +48,17 @@ function Locations({ updateUser, user }) {
           />
         </Box>
         <Box sx={{ flex: 1, display: "flex", flexDirection: "column" }}>
-          <Header onDrawerToggle={handleDrawerToggle} />
+          <Header onDrawerToggle={handleDrawerToggle} user={user}/>
           <Box
             component="main"
             sx={{ flex: 1, px: 4, bgcolor: "#eaeff1" }}
           ></Box>
-          {/* User cards */}
+          {/* Location cards */}
           <Container>
             <Grid container>
               {locationCards.map((location) => (
                 <Grid>
-                  <LocationCard location={location} user={user} />
+                  <LocationCard location={location} user={user} key={user.id}/>
                 </Grid>
               ))}
             </Grid>

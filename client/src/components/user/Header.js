@@ -19,7 +19,7 @@ import Typography from "@mui/material/Typography";
 
 const lightColor = "rgba(255, 255, 255, 0.7)";
 
-function Header(onDrawerToggle) {
+function Header({onDrawerToggle, user}) {
   // const { onDrawerToggle } = props;
   const navigate = useNavigate();
 
@@ -31,7 +31,7 @@ function Header(onDrawerToggle) {
     navigate("/locations");
   }
 
-   function navigateToUserFeed() {
+  function navigateToUserFeed() {
     navigate("/user");
   }
   return (
@@ -50,7 +50,7 @@ function Header(onDrawerToggle) {
               </IconButton>
             </Grid>
             <Grid item xs />
-            <Grid item>
+            {/* <Grid item>
               <Link
                 href="/"
                 variant="body2"
@@ -66,14 +66,14 @@ function Header(onDrawerToggle) {
               >
                 Go to docs
               </Link>
-            </Grid>
-            <Grid item>
+            </Grid> */}
+            {/* <Grid item>
               <Tooltip title="Alerts • No alerts">
                 <IconButton color="inherit">
                   <NotificationsIcon />
                 </IconButton>
               </Tooltip>
-            </Grid>
+            </Grid> */}
             <Grid item>
               {/* <IconButton color="inherit" sx={{ p: 0.5 }}>
                 <Avatar src="/static/images/avatar/1.jpg" alt="My Avatar" />
@@ -93,7 +93,7 @@ function Header(onDrawerToggle) {
           <Grid container alignItems="center" spacing={1}>
             <Grid item xs>
               <Typography color="inherit" variant="h5" component="h1">
-                My Profile
+               {user.first_name} {user.last_name}
               </Typography>
             </Grid>
             <Grid item>
@@ -124,8 +124,8 @@ function Header(onDrawerToggle) {
         sx={{ zIndex: 0 }}
       >
         <Tabs value={0} textColor="inherit">
-          <Tab label="Users" onClick={() => navigateToUserFeed()}/>
-          <Tab label="Locations" onClick={()=> navigateToLocations()}/>
+          <Tab label="Users" onClick={() => navigateToUserFeed()} />
+          <Tab label="Locations" onClick={() => navigateToLocations()} />
           {/* <Tab label="Templates" />
           <Tab label="Usage" /> */}
         </Tabs>

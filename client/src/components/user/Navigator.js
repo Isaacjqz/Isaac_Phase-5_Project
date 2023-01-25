@@ -24,9 +24,6 @@ import SettingsIcon from "@mui/icons-material/Settings";
 // import PhonelinkSetupIcon from "@mui/icons-material/PhonelinkSetup";
 // import IconButton from "@mui/material/IconButton";
 
-
-
-
 const categories = [
   {
     id: "My Profile",
@@ -36,14 +33,14 @@ const categories = [
         icon: <PeopleIcon />,
         active: true,
       },
-      { id: "Database", icon: <DnsRoundedIcon /> },
-      { id: "Storage", icon: <PermMediaOutlinedIcon /> },
-      { id: "Hosting", icon: <PublicIcon /> },
-      { id: "Functions", icon: <SettingsEthernetIcon /> },
-      {
-        id: "Machine learning",
-        icon: <SettingsInputComponentIcon />,
-      },
+      // { id: "Database", icon: <DnsRoundedIcon /> },
+      // { id: "Storage", icon: <PermMediaOutlinedIcon /> },
+      // { id: "Hosting", icon: <PublicIcon /> },
+      // { id: "Functions", icon: <SettingsEthernetIcon /> },
+      // {
+      //   id: "Machine learning",
+      //   icon: <SettingsInputComponentIcon />,
+      // },
     ],
   },
   {
@@ -77,7 +74,7 @@ function Navigator({ PaperProps, updateUser, user }) {
   const navigate = useNavigate();
 
   function navigateToDeleteSettings() {
-    navigate("/settings")
+    navigate("/settings");
   }
 
   const handleSignOut = () => {
@@ -96,11 +93,11 @@ function Navigator({ PaperProps, updateUser, user }) {
   return (
     <Drawer variant="permanent" {...PaperProps}>
       <List disablePadding>
-        <ListItem
+        {/* <ListItem
           sx={{ ...item, ...itemCategory, fontSize: 22, color: "#fff" }}
         >
           Welcome
-        </ListItem>
+        </ListItem> */}
         <ListItem sx={{ ...item, ...itemCategory }}>
           <ListItemIcon>
             <HomeIcon />

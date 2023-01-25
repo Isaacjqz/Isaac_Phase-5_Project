@@ -28,8 +28,8 @@ function EditProfile({ user, updateUser, setUpdate }) {
 
   const navigate = useNavigate();
 
-//   const handleEdit = (id) =>
-//     setEdit((currentUser) => currentUser.filter((p) => p.id !== id));
+  //   const handleEdit = (id) =>
+  //     setEdit((currentUser) => currentUser.filter((p) => p.id !== id));
   const handleEditUser = (updatedUser) =>
     setEdit((currentUser) => {
       return currentUser.map((user) => {

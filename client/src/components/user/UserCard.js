@@ -36,7 +36,7 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 }));
 
 function UserCard({ card, user }) {
-  // console.log(user.goals)
+  // console.log(user.img_url)
   const [expanded, setExpanded] = React.useState(false);
   const navigate = useNavigate();
 
@@ -53,14 +53,14 @@ function UserCard({ card, user }) {
   return (
     <ThemeProvider>
       <Typography sx={{ my: 5, mx: 2 }} color="text.secondary" align="center">
-        Gym matches near you
+        {/* Gym matches near you */}
         <Card sx={{ maxWidth: 345 }}>
           <CardHeader
-            avatar={
-              <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                R
-              </Avatar>
-            }
+            // avatar={
+            //   <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+            //     R
+            //   </Avatar>
+            // }
             action={
               <Button aria-label="settings" color="primary">
                 <MoreVertIcon
@@ -77,12 +77,12 @@ function UserCard({ card, user }) {
           <CardMedia
             component="img"
             height="194"
-            image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBb5p9VTP6zs-xH_475hW4n6qhbSVCsMPZ7Q&usqp=CAU"
-            alt="Paella dish"
+            image={card.img_url}
+            // alt="Paella dish"
           />
           <CardContent>
             <Typography variant="body2" color="text.secondary">
-              Users Goals and Details here part 1 
+              {/* Users Goals and Details here part 1  */}
             </Typography>
           </CardContent>
           <CardActions disableSpacing>
@@ -103,7 +103,7 @@ function UserCard({ card, user }) {
           </CardActions>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             <CardContent>
-              <Typography paragraph>Method:</Typography>
+              <Typography paragraph>Goals:</Typography>
               <Typography paragraph>
                 {userGoal}
               </Typography>

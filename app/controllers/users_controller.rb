@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
-  wrap_parameters :user, include: [:first_name, :last_name, :email, :zip_code, :age, :user_name, :password, :current_country, :current_state, :current_city]
+  wrap_parameters :user, include: [:first_name, :last_name, :email, :zip_code, :age, :user_name, :password, :current_country, :current_state, :current_city, :img_url]
   skip_before_action :authorized_user, only: [:create]
 
   # GET /users
@@ -64,6 +64,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :zip_code, :age, :user_name, :password, :current_country, :current_state, :current_city)
+      params.require(:user).permit(:first_name, :last_name, :email, :zip_code, :age, :user_name, :password, :current_country, :current_state, :current_city, :img_url)
     end
 end
