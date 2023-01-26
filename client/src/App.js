@@ -60,7 +60,7 @@ function App() {
         />
         <Route
           path="/locations"
-          element={<Locations goals={goals} updateUser={setUser} user={user} />}
+          element={<Locations goals={goals} updateUser={setUser} user={user} users={users}/>}
         />
         <Route
           path="/goals"

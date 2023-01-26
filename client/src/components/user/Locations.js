@@ -15,7 +15,7 @@ import Container from "@mui/material/Container";
 
 const drawerWidth = 256;
 
-function Locations({ updateUser, user }) {
+function Locations({ updateUser, user, users}) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -58,7 +58,7 @@ function Locations({ updateUser, user }) {
             <Grid container>
               {locationCards.map((location) => (
                 <Grid>
-                  <LocationCard location={location} user={user} key={user.id}/>
+                  <LocationCard location={location} user={user} key={user.id} users={users}/>
                 </Grid>
               ))}
             </Grid>

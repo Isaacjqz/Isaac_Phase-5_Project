@@ -36,19 +36,20 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 }));
 
 function UserCard({ card, user }) {
-  // console.log(user.img_url)
   const [expanded, setExpanded] = React.useState(false);
   const navigate = useNavigate();
+
+  console.log(card)
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
-  function navigateToUpdateGoal () {
-    navigate("/goals")
+  function navigateToUpdateGoal() {
+    navigate("/goals");
   }
 
-  const userGoal = user.goals.map(goal => [<p>{goal.goals}</p>])
+  const userGoal = user.goals.map((goal) => [<p>{goal.goals}</p>]);
 
   return (
     <ThemeProvider>
@@ -65,7 +66,7 @@ function UserCard({ card, user }) {
               <Button aria-label="settings" color="primary">
                 <MoreVertIcon
                   onClick={() => {
-                    navigateToUpdateGoal ()
+                    navigateToUpdateGoal();
                     // console.log("it works");
                   }}
                 />
@@ -104,9 +105,7 @@ function UserCard({ card, user }) {
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             <CardContent>
               <Typography paragraph>Goals:</Typography>
-              <Typography paragraph>
-                {userGoal}
-              </Typography>
+              <Typography paragraph>{userGoal}</Typography>
               {/* <Typography paragraph>
                 More Users Goals and Details here part 3
               </Typography>
